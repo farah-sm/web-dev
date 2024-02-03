@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-// Add services to the Items Controller
+// Set up services for handling web-related tasks (controllers, model binding, validation, etc.)
 builder.Services.AddControllers();
 
 var app = builder.Build();
@@ -16,7 +16,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-// Mapping of Controller
+// Map incoming web requests to appropriate controllers for processing.
 app.MapControllers();
 app.UseStaticFiles();
 
