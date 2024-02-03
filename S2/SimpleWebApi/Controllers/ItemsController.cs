@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using SimpleWebApi.Models;
+
 
 [ApiController]
 [Route("api/[controller]")]
@@ -35,4 +37,40 @@ public class ItemsController : ControllerBase
 
         return Ok(item);
     }
+
+    [HttpPost]
+    public ActionResult<Item> Create(Item newItem)
+    {
+        newItem.Id = items.Count + 1;
+        items.Add(newItem);
+        return CreatedAtAction(nameof(Get), new { id = newItem.Id }, newItem);
+    }
+
+    [HttpPut("{id}")]
+    public ActionResult<Item> Update(int id, Item updatedItem)
+    {
+        var existingItem = items.Find(i => i.Id == id);
+        if (existingItem == null)
+        {
+            return NotFound();
+        }
+        
+        existingItem.Name = updatedItem.Name;
+        existingItem.Price = updatedItem.Price;
+        return Ok(existingItem);   
+    }
+
+    [HttpDelete("{id}")]
+    public ActionResult Delete(int id)
+    {
+        var itemToRemove = items.Find(i => i.Id == id);
+        if (itemToRemove == null)
+        {
+            return NotFound();
+        }
+        
+        items.Remove(itemToRemove);
+        return NoContent();
+    }
+
 }
