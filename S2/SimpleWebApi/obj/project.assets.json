@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/home/Documents/web-dev/S2/SimpleWebApi/SimpleWebApi.csproj",
+      "projectUniqueName": "/Users/home/Documents/github/web-dev/S2/SimpleWebApi/SimpleWebApi.csproj",
       "projectName": "SimpleWebApi",
-      "projectPath": "/Users/home/Documents/web-dev/S2/SimpleWebApi/SimpleWebApi.csproj",
+      "projectPath": "/Users/home/Documents/github/web-dev/S2/SimpleWebApi/SimpleWebApi.csproj",
       "packagesPath": "/Users/home/.nuget/packages/",
-      "outputPath": "/Users/home/Documents/web-dev/S2/SimpleWebApi/obj/",
+      "outputPath": "/Users/home/Documents/github/web-dev/S2/SimpleWebApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/home/.nuget/NuGet/NuGet.Config"

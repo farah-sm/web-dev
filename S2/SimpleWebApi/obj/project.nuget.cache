@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZUdGh+g6+EdtT/d414lz66xRI87jmnFvthJxxyr/5MdJdjSf1MAsRpvbu6jcl29yubtSQhdSe3PnxqjCqzxWLg==",
+  "dgSpecHash": "B2iEXTRkNV7IgKRC7NeH+DfkFcvEqSQivEkyq/vHm7Z8vM+nspdCCZH+NXumVKk/xMBCStNbwQhfKQvXkJEW1Q==",
   "success": true,
-  "projectFilePath": "/Users/home/Documents/web-dev/S2/SimpleWebApi/SimpleWebApi.csproj",
+  "projectFilePath": "/Users/home/Documents/github/web-dev/S2/SimpleWebApi/SimpleWebApi.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
