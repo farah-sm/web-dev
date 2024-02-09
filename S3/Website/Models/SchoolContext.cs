@@ -13,3 +13,4 @@ namespace Website.Models
         public DbSet<Student> Students { get; set; }
     }
 }
+
