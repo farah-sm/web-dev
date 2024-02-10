@@ -160,6 +160,17 @@ dotnet tool install --global dotnet-aspnet-codegenerator
 
 11. Now run your app 
 
-Status 200 OK
+```dotnet run```
 
 
+
+
+-------------
+
+BONUS:
+
+To query the databse, naviagte to the database file, and run the command:
+
+```
+saeds-desktop[web-dev~main]:[homie-cluster]$ sqlite3 mydatabase.db "SELECT * FROM Students"
+                                              1|Mahamed|1998-08-09 08:43:00|69.0|111.0|```
