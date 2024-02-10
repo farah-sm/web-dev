@@ -1,9 +1,20 @@
-# Here we look at the steps to take creating a "Code first Approach"
-## It's worth noting this was compiled to create the MVC app using visual studio code
-### Visual studio code is a lot more light weight then VS code and hence the details in the commands, if you found this useful hit star!
+# My First MVC App in C#
+## Use this as a guide to build your first, C# MVC App with a DB integrated
 
-Check what port you've exposed, for me it's: http://localhost:5298/
+Here we look at the steps to take creating a "Code first Approach"
+It's worth noting this was compiled to create the MVC app using visual studio code
+Visual studio code is a lot more light weight then VS code and hence the details in the commands, if you found this useful hit star!
 
+To run this code, clone the repo locally, before you run it, expose the port of your choise by 
+navigating to the path:
+
+```
+/S3/Website/Properties/launchSettings.json
+```
+and changing the port from mine, 5298 to a port choice of your own. On Line 7 and 25: 
+```
+applicationUrl": "http://localhost:5298
+```
 
 ## Sequence
 1. Creating a new project
@@ -60,12 +71,13 @@ In this case I use SQLLite
 
 5. Installing the Package Manager
 
-## Two ways to install a package 
+Two ways to install a package 
 ```
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 ```
 OR
-## Hitting searching 
+
+Hitting searching 
 ```
 >NuGet Package Manager: Add Package"
 ```
@@ -78,9 +90,11 @@ OR
 dotnet tool install --global dotnet-ef
 ```
 
-Packages Installed for this program, can be found in:
-
+Packages Installed for this program, can be found in the path:
+```
 bin/Debug/net8.0/S3.deps.json
+```
+The dependencies I have in my app are:
 
     "Microsoft.EntityFrameworkCore": "8.0.1",
     "Microsoft.EntityFrameworkCore.Design": "8.0.1",
@@ -95,13 +109,13 @@ Only use packages you need.
 
 7. Adding the Migrations
 
-## Run the following command to create migrations
+Run the following command to create migrations
 ```
 dotnet ef migrations add InitialCreate
 
 ```
 
-## Apply the migrations to update the database:
+Apply the migrations to update the database:
 
 ```
 dotnet ef database update
@@ -109,6 +123,7 @@ dotnet ef database update
 ```
 
 -------------
+
 8. Adding the controllers
 
 Create the controllers, by manually getting them into the controllers folder. Be sure to use 
