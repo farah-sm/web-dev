@@ -36,6 +36,7 @@ applicationUrl": "http://localhost:5298
 Use the command
 
 ```
+dotnet new webapi
 dotnet new mvc
 ```
 
@@ -73,7 +74,9 @@ In this case I use SQLLite
 
 Two ways to install a package 
 ```
-dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+dotnet add package Microsoft.EntityFrameworkCore.Tools
 ```
 OR
 
@@ -111,7 +114,12 @@ Only use packages you need.
 
 Run the following command to create migrations
 ```
+dotnet new tool-manifest
+
+dotnet tool install --local dotnet-ef
+
 dotnet ef migrations add InitialCreate
+
 
 ```
 
@@ -129,6 +137,21 @@ dotnet ef database update
 Create the controllers, by manually getting them into the controllers folder. Be sure to use 
 the correct naming convention, if your model is called Grade.cs then its corresponding
 controller would be called GradesController.cs
+
+Or Via the command line
+
+```
+dotnet tool install --local dotnet-aspnet-codegenerator
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+```
+
+```
+dotnet aspnet-codegenerator controller -name StudentsController -async -api -m Student -dc SchoolContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name CoursesController -async -api -m Course -dc SchoolContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name EnrollmentsController -async -api -m Enrollment -dc SchoolContext -outDir Controllers
+```
+
 
 -------------
 

@@ -247,9 +247,9 @@
 /Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/scopedcss/bundle/S3.styles.css
 /Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/scopedcss/projectbundle/S3.bundle.scp.css
-/Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/S3.csproj.CopyComplete
 /Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/S3.dll
 /Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/refint/S3.dll
 /Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/S3.pdb
 /Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/S3.genruntimeconfig.cache
 /Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/ref/S3.dll
+/Users/home/Documents/github/web-dev/S3/Website/obj/Debug/net8.0/S3.csproj.Up2Date
