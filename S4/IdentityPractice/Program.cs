@@ -9,7 +9,6 @@ using IdentityPractice.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<SchoolContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Connection")));
@@ -24,7 +23,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.MapControllers();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

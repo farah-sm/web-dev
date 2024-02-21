@@ -1,0 +1,8 @@
+/Users/home/Documents/github/web-dev/S1/obj/Debug/net8.0/S1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/home/Documents/github/web-dev/S1/obj/Debug/net8.0/S1.AssemblyInfoInputs.cache
+/Users/home/Documents/github/web-dev/S1/obj/Debug/net8.0/S1.AssemblyInfo.cs
+/Users/home/Documents/github/web-dev/S1/obj/Debug/net8.0/S1.csproj.CoreCompileInputs.cache
+/Users/home/Documents/github/web-dev/S1/obj/Debug/net8.0/S1.MvcApplicationPartsAssemblyInfo.cache
+/Users/home/Documents/github/web-dev/S1/obj/Debug/net8.0/S1.RazorAssemblyInfo.cache
+/Users/home/Documents/github/web-dev/S1/obj/Debug/net8.0/S1.RazorAssemblyInfo.cs
+/Users/home/Documents/github/web-dev/S1/obj/Debug/net8.0/S1.sourcelink.json

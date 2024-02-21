@@ -60,3 +60,11 @@
 /Users/home/Documents/github/web-dev/S2/SimpleWebApi/obj/Debug/net8.0/SimpleWebApi.pdb
 /Users/home/Documents/github/web-dev/S2/SimpleWebApi/obj/Debug/net8.0/SimpleWebApi.genruntimeconfig.cache
 /Users/home/Documents/github/web-dev/S2/SimpleWebApi/obj/Debug/net8.0/ref/SimpleWebApi.dll
+/Users/home/Documents/github/web-dev/S2/SimpleWebApi/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/home/Documents/github/web-dev/S2/SimpleWebApi/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/home/Documents/github/web-dev/S2/SimpleWebApi/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/home/Documents/github/web-dev/S2/SimpleWebApi/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/home/Documents/github/web-dev/S2/SimpleWebApi/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/home/Documents/github/web-dev/S2/SimpleWebApi/obj/Debug/net8.0/SimpleWebApi.csproj.AssemblyReference.cache
+/Users/home/Documents/github/web-dev/S2/SimpleWebApi/obj/Debug/net8.0/SimpleWebApi.MvcApplicationPartsAssemblyInfo.cs
+/Users/home/Documents/github/web-dev/S2/SimpleWebApi/obj/Debug/net8.0/SimpleWe.66A1867E.Up2Date
