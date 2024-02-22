@@ -275,6 +275,9 @@ install the package:
 
 ```
 MailKit by Jeffrey Stedfast
+
+dotnet add package MailKit
+
 ```
 
 at the top of the EmaillService.cs file be sure to use these libraries:
@@ -340,3 +343,4 @@ with the entry
 }
 ```
 
+--- To add JWT
