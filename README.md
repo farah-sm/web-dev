@@ -37,7 +37,6 @@ Use the command
 
 ```
 dotnet new webapi
-dotnet new mvc
 ```
 
 -----------
@@ -47,6 +46,11 @@ dotnet new mvc
 Create a file under the Models folder, name it as what you would name 
 Create many Files as you would like Models created
 
+Remember: (at the top of each model)
+```
+using System.Collections.Generic;
+```
+
 -----------
 3. Registering the context with dependency injection
 
@@ -54,8 +58,17 @@ In the program.cs we add this code, this is subject to which databse
 solution your choose, in this case I use SQLLite:
 
 ```
+builder.Services.AddControllers();
 builder.Services.AddDbContext<SchoolContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+  ptions.UseSqlite(builder.Configuration.GetConnectionString("Connection")));
+```
+and then add
+```
+app.MapControllers();
+```
+just before the
+```
+app.UseHttpsRedirection();
 ```
 -----------
 4. Adding the Database Connection string
@@ -154,7 +167,7 @@ dotnet aspnet-codegenerator controller -name EnrollmentsController -async -api -
 
 
 -------------
-
+## Optional
 9. Adding the respective Views
 
 Create the View files, they will be in "cshtml" files, be sure to modularise it, in our context 
@@ -163,6 +176,7 @@ I seperate my "cshtml" files for every operation.
 E.g. I have a Create, Delete, Edit, Index, Details file within the folder.
 
 -------------
+## Optional
 10. Now "Scaffolding" time
 
 In Visual Studio code, you need the package "dotnet-aspnet-codegenerator" for the application to run. This command
@@ -186,8 +200,6 @@ dotnet tool install --global dotnet-aspnet-codegenerator
 ```dotnet run```
 
 
-
-
 -------------
 
 BONUS:
@@ -197,3 +209,134 @@ To query the databse, naviagte to the database file, and run the command:
 ```
 saeds-desktop[web-dev~main]:[homie-cluster]$ sqlite3 mydatabase.db "SELECT * FROM Students"
                                               1|Mahamed|1998-08-09 08:43:00|69.0|111.0|```
+
+
+
+To add Sign In Funcitonality, JWT and Identity Entity Framework check these steps out:
+
+Now go to the SchoolContext.cs file and change this line 
+(inheritance class basically):
+From
+```
+public class SchoolContext : DbContext
+```
+to
+```
+public class SchoolContext : IdentityDbContext<IdentityUser>
+```
+
+be sure to install the package:
+
+```
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+```
+
+and
+```
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+```
+
+at the top of the SchoolContext.cs file
+
+now go to the program.cs file and add another service 
+dependency injection:
+```
+//code
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<SchoolContext>().AddDefaultTokenProviders();
+```
+If you see errors, add 
+```
+using Microsoft.AspNetCore.Identity; 
+```
+at the top of the program.cs file 
+
+Once you have made these changes and saved the files.
+Now go to tools -> NuGet package manager -> Package manager console
+And type in
+```
+dotnet ef migrations add IdentityAdded
+```
+If it is successful, you will see a change in migrations 
+folder, after this type this in the same console:
+```
+dotnet ef database update
+```
+
+
+Create a new Model named: AuthModel.cs
+
+In the project directory create a new folder named Services
+
+and two files named: EmailSettings.cs & EmailService.cs
+
+install the package:
+
+```
+MailKit by Jeffrey Stedfast
+```
+
+at the top of the EmaillService.cs file be sure to use these libraries:
+
+```
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit;
+using Microsoft.Extensions.Options;
+using YourProject.Services;
+```
+
+Then go to your COntrollers folder and add a new controller called AccountController.cs
+
+then use these lirbaries in your controllers file:
+
+```
+using IdentityPractice.Models;
+using IdentityPractice.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+```
+
+Now to register our email service in our program.cs file we need to add:
+
+```
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddScoped<EmailService>();
+```
+
+in the appsettings.jsson file we need to add after theconnection string:
+
+```
+"EmailSettings": {
+ "SmtpServer": "smtp.gmail.com",//only valid for gmail
+ "SmtpPort": 587,
+ "SmtpUsername": "yourgmailaccount@gmail.com",//create a testing gmail account
+ "SmtpPassword": "your gmail app password"//use one time generated app password
+ },
+```
+
+BONUS:
+
+set up MFA: https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome.
+
+then generate an app password: https://myaccount.google.com/apppasswords
+
+then test your registration works using 
+
+```
+https://localhost:44300/api/account/register
+```
+with the entry
+```
+{
+ "Email": "receiverid@gmail.com",
+ "Password": "Password123!"
+}
+```
+
