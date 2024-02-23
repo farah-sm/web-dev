@@ -345,3 +345,60 @@ with the entry
 ```
 
 --- To add JWT
+
+Now Install this dependency:
+
+
+```
+Microsoft.AspNetCore.Authentication.JwtBearer
+```
+
+and add this to the application:
+
+```
+    builder.Services.AddScoped<RolesController>();
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                        ValidAudience = builder.Configuration["Jwt:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                    };
+                    });
+```
+
+add this to the appsettings.json file:
+
+```
+"Jwt": { 
+
+    "Key": "your_secret_key_here",//could be any key e.g. j38jde9je9@#$%^&* 
+
+    "Issuer": "your_issuer_here",//e.g. â€˜https://localhost:44300â€™ port could be different in your case 
+
+    "ExpireHours": 1 
+
+  }, 
+
+```
+
+Make the relevant updates to the AccountController and create a new Controller called RolesController.cs, 
+where you'll create roles, assign thoise roles to users.
+
+Then add two classes, one for AssignRoleModel.cs and the second one for UpdateRoleModel.cs
+
+Now our project has roles (create an Admin, using postman)
+
+
+
