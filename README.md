@@ -265,7 +265,6 @@ folder, after this type this in the same console:
 dotnet ef database update
 ```
 
-
 Create a new Model named: AuthModel.cs
 
 In the project directory create a new folder named Services
