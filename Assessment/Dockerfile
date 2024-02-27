@@ -1,28 +1,19 @@
-# Use the ASP.NET Core runtime image as base
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 80
-
-# Use the .NET SDK image for building
+# Build Stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+WORKDIR /source
+COPY . .
+RUN dotnet restore "./SearchRoles/SearchRoles.csproj" --disable-parallel
+RUN dotnet publish "./SearchRoles/SearchRoles.csproj" -c release -o /app
 
-# Copy the project files and restore dependencies
-COPY SearchRoles .
-RUN dotnet restore "SearchRoles.csproj"
-
-# Build the application
-RUN dotnet build "SearchRoles.csproj" -c Release -o /app/build
-
-# Publish the application
-FROM build AS publish
-RUN dotnet publish "SearchRoles.csproj" -c Release -o /app/publish
-
-# Final stage: use the published application to reduce image size
-FROM base AS final
+# Serve Stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app ./
+
+EXPOSE 5000
+
 ENTRYPOINT ["dotnet", "SearchRoles.dll"]
+
 
 # docker build -t my-web-app .
 # docker run -d -p 8080:80 my-web-app
