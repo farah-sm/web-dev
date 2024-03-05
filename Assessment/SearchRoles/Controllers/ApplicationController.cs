@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SearchRoles.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SearchRoles.Controllers
 {
@@ -38,6 +39,7 @@ namespace SearchRoles.Controllers
 
         // POST: api/Application
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Application>> PostApplication(Application application)
         {
             _context.Applications.Add(application);
@@ -48,6 +50,7 @@ namespace SearchRoles.Controllers
 
         // DELETE: api/Application/5
         [HttpDelete("{userId}/{jobId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteApplication(int userId, int jobId)
         {
             var application = await _context.Applications.FindAsync(userId, jobId);
