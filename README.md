@@ -400,4 +400,9 @@ Then add two classes, one for AssignRoleModel.cs and the second one for UpdateRo
 Now our project has roles (create an Admin, using postman)
 
 
+sqlite3 maindatabase.db "SELECT * FROM AspNetRoles;"
+
+sqlite3 maindatabase.db "SELECT * FROM sqlite_master WHERE type='table';"
+
+sqlite3 maindatabase.db "INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES ('1', '1');"
 

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SearchRoles.Models;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace JobSearch.Controllers
@@ -39,6 +40,7 @@ namespace JobSearch.Controllers
 
         // POST: api/Category
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
             _context.Categories.Add(category);
@@ -49,6 +51,7 @@ namespace JobSearch.Controllers
 
         // PUT: api/Category/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutCategory(int id, Category category)
         {
             if (id != category.Id)
@@ -79,6 +82,7 @@ namespace JobSearch.Controllers
 
         // DELETE: api/Category/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _context.Categories.FindAsync(id);

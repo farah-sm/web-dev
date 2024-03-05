@@ -44,18 +44,26 @@ namespace SearchRoles.Controllers
             return Ok(role);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateRole([FromBody] string roleName)
+        [HttpPost("create-role")]
+        public async Task<IActionResult> CreateRole([FromBody] CreateRoleModel model)
         {
-            var role = new IdentityRole(roleName);
+            // Create a new IdentityRole instance
+            var role = new IdentityRole
+            {
+                Name = model.RoleName
+            };
+
+            // Create the role using RoleManager
             var result = await _roleManager.CreateAsync(role);
 
             if (result.Succeeded)
             {
                 return Ok("Role created successfully.");
             }
-
-            return BadRequest(result.Errors);
+            else
+            {
+                return BadRequest(result.Errors);
+            }
         }
 
         [HttpPut]
