@@ -39,6 +39,11 @@ Use the command
 dotnet new webapi
 ```
 
+then create a .gitignore file:
+
+```
+dotnet new gitignore
+```
 -----------
 
 2. Creating Model classes Adding DBContext model classes
